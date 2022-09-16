@@ -1,1 +1,11 @@
-<h1>商品詳細</h1>
+<div>
+  <%= image_tag item.get_image %>
+  <p>商品名:<%= item.name %></p>
+  <p>説明文:<%= item.introduction %></p>
+  <p>値段:<%= item.price %></p>
+
+  <%= form_with model: @item do |f| %>
+    <%= f.number_field :quantity, autocomplete: "o %>
+    <%= f.submit 'カートに入れる' %>
+  <% end %>
+</div>
