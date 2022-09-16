@@ -7,5 +7,5 @@ class Public::AddressesController < ApplicationController
   end 
   
   def create
-    
+  end  
 end
