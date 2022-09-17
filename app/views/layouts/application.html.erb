@@ -23,6 +23,10 @@
               <% if admin_signed_in? %>
       <!--ログイン時に表示-->
               <li>
+                <%= link_to '/customers/mypage', class: "nav-link text-light" do %>マイページ
+                <% end %>
+              </li>
+              <li>
                 <%= link_to '/admin/items', class: "nav-link text-light" do %>商品一覧
                 <% end %>
               </li>
