@@ -2,6 +2,17 @@
   <div class="row pt-5">
     <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
     <h4>商品新規登録(レイアウト未)</h4>
+
+    <!--バリデーションエラー文-->
+    <% if @item.errors.any? %>
+      <%= @item.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
     <table>
       <tr>
         <td>商品画像</td>
@@ -17,7 +28,7 @@
       </tr>
       <tr>
         <td>ジャンル</td>
-        <td><%= f.text_field :genre_id %>プルダウン選択の実装まだできてない</td>
+        <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "-- 選択して下さい --" %></td>
       </tr>
       <tr>
         <td>税抜価格</td>
