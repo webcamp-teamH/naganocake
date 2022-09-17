@@ -8,7 +8,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
 
    def after_sign_in_path_for(resource)
-     customer_path(current_customer)
+     customers_mypage_path(current_customer)
    end
 
    def after_sign_out_path_for(resource)
@@ -16,7 +16,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
    end
 
    def configure_permitted_parameters
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name,:first_name,:last_name_kana,:first_name_kana,:postcode,:address,:phone_number,:email,])
+     devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name,:first_name,:last_name_kana,:first_name_kana,:postcode,:address,:phone_number])
      devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
    end
 
