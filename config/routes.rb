@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     get "about" => "homes#about"
 
     resources :items, only: [:index, :show]
-    resources :customers, only: [:show]
+    # resources :customers, only: [:show]
+    get '/customers/mypage' =>'customers#show'
     get '/customers/infomation/edit' => 'customers#edit'
     patch '/customers/infomation' => 'customers#update'
     get '/customers/cancel' => 'customers#cancel'
