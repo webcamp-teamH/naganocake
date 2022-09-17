@@ -1,1 +1,42 @@
-<h1>顧客一覧画面</h1>
+<div class="container">
+<h3>会員一覧</h3>
+</div>
+
+  <div class="container">
+    <div class="row">
+     <div class="col">
+      <table>
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td>
+                <%= customer.id %>
+              </td>
+              <td>
+                <%= customer.last_name %><%= customer.first_name %>
+              </td>
+              <td>
+                <%= customer.email %>
+              </td>
+              <td>
+                <% if customer.is_closed == true %>
+                  <p>有効</p>
+                <% else %>
+                  <p>退会済</p>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+　   </div>
+　  </div>
+　</div>
