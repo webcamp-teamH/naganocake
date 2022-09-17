@@ -8,12 +8,12 @@
     </tr>
   </thead>
   <tbody>
-    <!--each do-->
+    <% @orders.each do |order| %>
       <tr>
-        <td><!--購入日<%= .strftime('%Y/%m/%d %H:%M:%S') %>--></td>
-        <td><!--購入者--><%= .name %></td>
+        <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M'), admin_order_path(order) %></td>
+        <td><%= order.name %></td>
         <td><!--注文個数--></td>
         <td><!--注文ステータス--></td>
       </tr>
-    <!--end-->
+    <% end %>
   </tbody>

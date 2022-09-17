@@ -2,27 +2,27 @@
     <table>
       <tr>
         <th>購入者</th>
-        <td><%= .name %></td>
+        <td><%= @order.name %></td>
       </tr>
       <tr>
         <th>注文日</th>
-        <td><!--購入日.strftime('%Y/%m/%d')--></td>
+        <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
       </tr>
       <tr>
       <th>配送先</th>
-        <td><%= .postcode %><%= .address %><br>
-            <%= .name %></td>
+        <td>〒<%= @order.post_code %>　<%= @order.address %><br>
+            <%= @order.name %></td>
       </tr>
       <tr>
         <th>支払方法</th>
-        <td><%= .payment_method %></td>
+        <td></td>
       </tr>
       <tr>
         <th>注文ステータス</th>
-        <td><!--form_with model do?-->
-            <!--ステータスの選択-->
+        <td>< <%= form_with  model: @order, url: admin_order_path(@order)  do |f| %>
+            <%= f.select :status, Order.statuses_i18n.invert, {prompt: false} %>
             <%= f.submit "更新" %>
-            <!--end--></td>
+            <% end %></td>
       </tr>
     </table>
 
@@ -37,20 +37,20 @@
         </tr>
       </thead>
       <tbody>
-        <!--each do-->
+        <% @order.order_items.each do |order_item| %>
           <tr>
-            <td><%= .item.name %></td>
+            <td><%= order_item.item.name %></td>
             <td><!--<%= %>--></td>
-            <td><%= .quantity %></td>
+            <td><%= order_item.order_quantity%></td>
             <td><!--<%= %> --></td>
             <td>
-              <!--form_with model?-->
-              <!--ステータスの選択-->
+              <%= form_with  model: order_item, url: admin_order_item_path(order_item.id), local: true do |f| %>
+              <%= f.select :production_status, OrderItem.production_statuses_i18n.invert, {prompt: false} %>
               <%= f.submit "更新" %>
-              <!--end-->
+              <% end %>
             </td>
           </tr>
-        <!--end-->
+        <% end %>
       </tbody>
     </table>
 
@@ -61,7 +61,7 @@
       </tr>
       <tr>
         <th>送料</th>
-        <td><%= .shipping_cost %></td>
+        <td><%= @order.shipping_cost %></td>
       </tr>
       <tr>
         <th>請求金額合計</th>
