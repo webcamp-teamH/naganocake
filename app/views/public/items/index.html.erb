@@ -1,1 +1,15 @@
-<h1>商品一蘭</h1>
+<h1>商品一覧（全 <%= @item.count %> 件）</h1>
+
+<% @items.each do |item| %>
+<div>
+  <%= image_tag item.get_image %>
+  <p>
+    <%= link_to item_path(item.id) do %>
+      商品名:<%= item.name %>
+    <% end %>
+  </p>
+  <p>値段:<%= item.price %></p>
+</div>
+<% end %>
+
+<%= paginate @items %>
