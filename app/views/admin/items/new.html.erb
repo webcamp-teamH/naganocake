@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row pt-5">
     <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
-    <h4>商品新規登録(レイアウト未)</h4>
+    <h4>商品新規登録</h4>
 
     <!--バリデーションエラー文-->
     <% if @item.errors.any? %>
@@ -39,7 +39,7 @@
         <td><%= f.text_area :is_active %>2択選択のまだ実装できてない</td>
       </tr>
       <tr>
-        <td><%= f.submit '投稿' %></td>
+        <td><%= f.submit '投稿', class: 'btn btn-success' %></td>
       </tr>
     <% end %>
     </table>
@@ -47,7 +47,9 @@
 </div>
 
 
-
+<h5>★販売ステータスの記述</h5>
+<h5>タイトルのCSS</h5>
+<h5>レイアウト未</h5>
 
 
 
