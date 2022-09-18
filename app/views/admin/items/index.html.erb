@@ -2,12 +2,22 @@
 
 <% @items.each do |item| %>
 
+  <p>商品ID</p>
+  <span><%= item.id %></span>
   <p>商品名</p>
   <span><%= item.name %></span>
+  <p>税込価格</p>
+  <span><%= item.price %></span>
+  <p>ジャンル</p>
+  <span><%= item.genre_id %></span>
+  <p>ステータス</p>
+  <span><%= item.is_active %></span>
+
 
 <% end %>
 
+<h5>ジャンルの表記</h5>
+<h5>ステータスの表記</h5>
 <h5>テーブル作成要</h5>
 <h5>ページネーション要</h5>
-
 <h5>商品追加のボタン必要</h5>
