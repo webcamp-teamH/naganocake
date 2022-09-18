@@ -2,7 +2,7 @@
   <h1>商品一覧</h1>
   <div class="row">
 
-    <h5>----------------------⇒商品追加のボタン必要⇒------------------------</h5>
+    <h5><%= link_to '+(商品追加のボタン)', new_admin_item_path %></h5>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -19,17 +19,18 @@
             <td><%= item.id %></td>
             <td><%= link_to item.name, admin_item_path(item.id) %></td>
             <td><%= item.price %></td>
-            <td><%= item.genre_id %></td>
-            <td><%= item.is_active %></td>
+            <td><%= item.genre.name %></td>
+            <td><%= item.is_active ? '販売中' : '売切' %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+    <%= paginate @items %>
   </div>
 </div>
 
-<h5>商品名のリンク色変える</h5>
-<h5>ステータスの表記変更</h5>
-<h5>ジャンルの表記変更</h5>
+<h5>商品追加の「＋」ボタン</h5>
+<h5>商品名のリンク色を黒、下線有りに変える</h5>
+<h5>販売ステータスの色を緑に変更</h5>
+<h5>タイトルのCSS</h5>
 <h5>テーブル作成微修正</h5>
-<h5>ページネーション要</h5>
