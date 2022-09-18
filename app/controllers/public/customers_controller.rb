@@ -10,9 +10,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    
-    
-    
+    @customer = current_customer
+    if @customer.update(customers_params)
+      redirect_to customers_mypage_path
+    else
+      render :customers_infomation_edit_path
+    end
   end
 
   private
