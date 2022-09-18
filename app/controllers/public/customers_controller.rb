@@ -5,6 +5,16 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
   end
 
+  def edit
+    @customer = current_customer
+  end
+
+  def update
+    
+    
+    
+  end
+
   private
 
   def customers_params
