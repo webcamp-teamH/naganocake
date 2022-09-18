@@ -3,7 +3,7 @@
   <div>
     <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
       <div>
-      <%= form_with model: ~~ do |f| %>
+      <%= form_with(model: @customer, url: admin_customer_path, local: true ,method: :patch) do |f| %>
       <div>
         <%= f.label :"会員ID" %>
         <%= f.label :"#{@customer.id}" %>
