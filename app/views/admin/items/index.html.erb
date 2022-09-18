@@ -1,23 +1,35 @@
-<h1>商品一覧</h1>
+<div class="container">
+  <h1>商品一覧</h1>
+  <div class="row">
 
-<% @items.each do |item| %>
+    <h5>----------------------⇒商品追加のボタン必要⇒------------------------</h5>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税込価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= link_to item.name, admin_item_path(item.id) %></td>
+            <td><%= item.price %></td>
+            <td><%= item.genre_id %></td>
+            <td><%= item.is_active %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-  <p>商品ID</p>
-  <span><%= item.id %></span>
-  <p>商品名</p>
-  <span><%= item.name %></span>
-  <p>税込価格</p>
-  <span><%= item.price %></span>
-  <p>ジャンル</p>
-  <span><%= item.genre_id %></span>
-  <p>ステータス</p>
-  <span><%= item.is_active %></span>
-
-
-<% end %>
-
-<h5>ジャンルの表記</h5>
-<h5>ステータスの表記</h5>
-<h5>テーブル作成要</h5>
+<h5>商品名のリンク色変える</h5>
+<h5>ステータスの表記変更</h5>
+<h5>ジャンルの表記変更</h5>
+<h5>テーブル作成微修正</h5>
 <h5>ページネーション要</h5>
-<h5>商品追加のボタン必要</h5>
