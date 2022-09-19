@@ -1,11 +1,26 @@
 <h1>商品詳細</h1>
 
-商品の写真
+<%= image_tag @item.get_image %>
 
-商品名
-商品説明
-ジャンル
-税込価格(税抜価格)
-販売ステータス
+<h5>商品名</h5>
+<p><%= @item.name %></p>
 
-編集するボタン
+<h5>商品説明</h5>
+<p><%= @item.introduction %></p>
+
+<h5>ジャンル</h5>
+<p><%= @item.genre.name %></p>
+
+<h5>税込価格(税抜価格)</h5>
+<p><%= @item.price %>円</p>
+
+<h5>販売ステータス</h5>
+<p><%= @item.is_active ? '販売中' : '売切' %><p>
+
+
+  <%= link_to '編集する', edit_admin_item_path(@item.id), class: 'btn btn-success' %>
+
+
+<h5>販売ステータスの色を緑に変更</h5>
+<h5>タイトルのCSS</h5>
+<h5>レイアウトが未着手</h5>
