@@ -5,14 +5,18 @@
   購入には会員登録が必要になります。
 </p>
 
-
 <div>
   <h1>新着商品</h1>
-  <ul>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
+  <div style ="display: flex; flex-wrap:wrap;">
+  <% @items.each do |item| %>
+    <%= link_to item_path(item) do %>
+    <div>
+      <%= item.get_item_image %>
+      <%= item.name %>
+      <%= item.with_tax_price %>
+    </div>
+    <% end %>
+  <% end %>
+  </div>
   <a href ="/items">すべての商品を見る</a>
 </div>
