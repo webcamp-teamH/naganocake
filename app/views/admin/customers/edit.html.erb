@@ -1,11 +1,13 @@
-<h1>顧客編集画面</h1>
-<div>
-  <div>
-    <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h4>
+<div class="container">
+  <div class="row">
+    <h4 class="m-4"><span style="background-color:#dddddd">
+                    <%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集
+                    </span></h4>
+      <div class="col-md-10">
       <div>
       <%= form_with(model: @customer, url: admin_customer_path, local: true ,method: :patch) do |f| %>
       <div>
-        <%= f.label :"会員ID" %>
+        会員ID
         <%= f.label :"#{@customer.id}" %>
       </div>
 

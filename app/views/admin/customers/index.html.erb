@@ -5,8 +5,8 @@
   <div class="container">
     <div class="row">
      <div class="col">
-      <table>
-        <thead>
+      <table class="table">
+        <thead class="table-secondary">
           <tr>
             <th>会員ID</th>
             <th>氏名</th>
@@ -21,7 +21,7 @@
                 <%= customer.id %>
               </td>
               <td>
-                <%= link_to admin_customer_path(customer)  do %>
+                <%= link_to admin_customer_path(customer), class: "btn-link"  do %>
                 <%= customer.last_name %><%= customer.first_name %>
                 <% end %>
               </td>
@@ -30,9 +30,9 @@
               </td>
               <td>
                 <% if customer.is_closed == true %>
-                  <p>有効</p>
+                  <p class="text-success font-weight-bold">>有効</p>
                 <% else %>
-                  <p>退会済</p>
+                  <p class='text-secondary font-weight-bold'>>退会済</p>
                 <% end %>
               </td>
             </tr>
