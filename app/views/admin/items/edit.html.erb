@@ -25,7 +25,12 @@
       </tr>
       <tr>
         <td>販売ステータス</td>
-        <td><%= f.text_area :is_active %>2択選択のまだ実装できてない</td>
+        <td>
+          <%= f.radio_button :is_active, true %>
+          <%= f.label :is_active, "販売中", {style: "display: inline-block;"} %>
+          <%= f.radio_button :is_active, false %>
+          <%= f.label :is_active, "販売停止中", {style: "display: inline-block;"} %>
+        </td>
       </tr>
       <tr>
         <td><%= f.submit '変更を保存', class: 'btn btn-success' %></td>
@@ -35,7 +40,7 @@
 <% end %>
 
 
-<h5>★販売ステータスの記述変更</h5>
+<h5>★販売ステータス販売中止ボタン押すとエラー出るので修正要</h5>
 <h5>タイトルのCSS</h5>
 <h5>レイアウトが未着手</h5>
 
