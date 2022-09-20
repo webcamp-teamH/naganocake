@@ -45,7 +45,7 @@
 
 <div>
   <spn>支払方法</spn>
-  <span><%= @confirm_payment_method %></span>
+  <span><%= @payment_method %></span>
 </div>
 <div>
   <span>お届け先</span><br>
@@ -58,7 +58,7 @@
 
 <div>
   <%= form_with model: @order, method: :post do |f| %>
-    <%= f.hidden_field :payment_method, :value => @confirm_payment_method %>
+    <%= f.hidden_field :payment_method, :value => @payment_method %>
     <%= f.hidden_field :postcode, :value => @selected_address.postcode %>
     <%= f.hidden_field :address, :value => @selected_address.address %>
     <%= f.hidden_field :name, :value => @selected_address.name %>

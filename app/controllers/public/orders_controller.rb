@@ -16,11 +16,11 @@ class Public::OrdersController < ApplicationController
     @cart_total = cart_total
     @shipping_cost = shipping_cost
     @grand_total = @cart_total + @shipping_cost
-    @confirm_payment_method = order_params[:payment_method]
+    @payment_method = order_params[:payment_method]
 
     if order_params[:select_address] == "ご自身の住所"
       @customer = current_customer
-      @selected_address = Address.create(customer_id: @customer, name: @customer.first_name + @customer.last_name, address: @customer.address, postcode: @customer.postcode)
+      @selected_address = Address.create(customer_id: @customer, name: @customer.last_name + @customer.first_name, address: @customer.address, postcode: @customer.postcode)
 
     elsif order_params[:select_address]  == "登録住所から選択"
       if order_params[:address_id] == nil
