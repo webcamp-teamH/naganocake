@@ -19,8 +19,8 @@
 　　　      <tr>
     　 　　      <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M'), admin_order_path(order) %></td>
 　　          <td><%= order.name %></td>
-  　 　　        <td><!--注文個数--></td>
-  　 　  　      <td><!--注文ステータス--></td>
+　　          <td><%= order.order_items.sum(:quantity) %></td>
+　　          <td><%= Order.order_statuses_i18n[order.order_status] %></td>
         　　　</tr>
     　　  　<% end %>
         </tbody>

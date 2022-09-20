@@ -8,12 +8,16 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+      if  params[:order][:order_status] == "payment_confirmation"
+          @order_items.update(production_status: "waiting_for_production")
+      end
+      redirect_to admin_order_path(@order)
   end
 
   private
 
   def order_params
-    params.require(:order).permit( :status)
+    params.require(:order).permit(:order_status)
   end  
   
 end
