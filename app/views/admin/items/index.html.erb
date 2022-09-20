@@ -26,7 +26,15 @@
             <td><%= link_to item.name, admin_item_path(item.id) %></td>
             <td><%= item.price %></td>
             <td><%= item.genre.name %></td>
-            <td><%= item.is_active ? '販売中' : '売切' %></td>
+            <td>
+              <div class="font-weight-bold">
+                <% if item.is_active == true %>
+                  <p class="text text-success">販売中</p>
+                <% else %>
+                  <p class="text text-secondary">販売停止中</p>
+                <% end %>
+              </div>
+            </td>
           </tr>
         <% end %>
       </tbody>
@@ -35,8 +43,7 @@
   </div>
 </div>
 
-<h5>商品追加の「＋」ボタン</h5>
+
 <h5>商品名のリンク色を黒、下線有りに変える</h5>
-<h5>販売ステータスの色を緑に変更</h5>
 <h5>タイトルのCSS</h5>
 <h5>テーブル作成微修正</h5>

@@ -15,12 +15,16 @@
 <p><%= @item.price %>円</p>
 
 <h5>販売ステータス</h5>
-<p><%= @item.is_active ? '販売中' : '売切' %><p>
+<div class="font-weight-bold">
+<% if @item.is_active == true %>
+  <p class="text text-success">販売中</p>
+<% else %>
+  <p class="text text-secondary">販売停止中</p>
+<% end %>
+</div>
+
+<%= link_to '編集する', edit_admin_item_path(@item.id), class: 'btn btn-success' %>
 
 
-  <%= link_to '編集する', edit_admin_item_path(@item.id), class: 'btn btn-success' %>
-
-
-<h5>販売ステータスの色を緑に変更</h5>
 <h5>タイトルのCSS</h5>
 <h5>レイアウトが未着手</h5>

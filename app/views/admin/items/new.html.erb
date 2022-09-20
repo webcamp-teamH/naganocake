@@ -36,7 +36,12 @@
       </tr>
       <tr>
         <td>販売ステータス</td>
-        <td><%= f.text_area :is_active %>2択選択のまだ実装できてない</td>
+        <td>
+        　<%= f.radio_button :is_active, true %>
+        　<%= f.label :is_active, "販売中" %>
+        　<%= f.radio_button :is_active, false %>
+        　<%= f.label :is_active, "販売停止中" %>
+        </td>
       </tr>
       <tr>
         <td><%= f.submit '投稿', class: 'btn btn-success' %></td>
@@ -48,7 +53,6 @@
 
 
 
-<h5>★販売ステータスの記述</h5>
 <h5>タイトルのCSS</h5>
 <h5>レイアウト未</h5>
 
