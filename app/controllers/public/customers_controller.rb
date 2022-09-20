@@ -18,6 +18,13 @@ class Public::CustomersController < ApplicationController
     end
   end
 
+  def clse
+    @customer = current_customer
+    @customer.update(is_active: true)
+    sign_out
+    redirect_to root_path
+  end
+
   private
 
   def customers_params
