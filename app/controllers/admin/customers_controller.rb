@@ -1,5 +1,5 @@
 class Admin::CustomersController < ApplicationController
-  
+
   def index
     @customers = Customer.page(params[:page])
   end
@@ -20,10 +20,10 @@ class Admin::CustomersController < ApplicationController
       render "edit"
     end
   end
-  
+
   private
 	def customer_params
 	  params.require(:customer).permit(:first_name,:last_name,:first_name_kana,:last_name_kana,:postcode,:address,:phone_number,:email,:is_closed)
 	end
-  
+
 end
