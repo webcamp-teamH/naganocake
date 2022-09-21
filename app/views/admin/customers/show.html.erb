@@ -1,60 +1,63 @@
 <div class="container">
-  <div class="row">
     <h4 class="m-4"><span style="background-color:#eeeeee">
-                   <%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細
-                   </span></h4>
-      <div class="col-md-10">
-          <table class="row mb-3">
+                   <%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</span></h4>
+</div>
+<div class="container">
+  <div class="row">
+      <div class="col-5">
+          <table class=" table table-borderless">
+            <tbody>
+              <tr>
+                <td>会員ID</td>
+                <td><%= @customer.id %></td>
+              </tr>
 
-              <div style= "line-height: 2em">
-                会員ID
-                <%= @customer.id %>
-              </div>
+              <tr>
+                <td>氏名</td>
+                <td><%= @customer.last_name %>  <%= @customer.first_name %></td>
+              </tr>
 
-              <div style= "line-height: 2em">
-                氏名
-                <%= @customer.last_name %><%= @customer.first_name %>
-              </div>
+              <tr>
+                <td>フリガナ</td>
+                <td><%= @customer.last_name_kana %>  <%= @customer.first_name_kana %></td>
+              </tr>
 
-              <div style= "line-height: 2em">
-                フリガナ
-                <%= @customer.last_name_kana %><%= @customer.first_name_kana %>
-              </div>
+              <tr>
+                <td>郵便番号</td>
+                <td><%= @customer.postcode %></td>
+              </tr>
 
-              <div style= "line-height: 2em">
-                郵便番号
-                <%= @customer.postcode %>
-              </div>
+              <tr>
+                <td>住所</td>
+                <td><%= @customer.address %></td>
+              </tr>
 
-              <div style= "line-height: 2em">
-                住所
-                <%= @customer.address %>
-              </div>
+              <tr>
+               <td> 電話番号</td>
+                <td><%= @customer.phone_number %></td>
+              </tr>
 
-              <div style= "line-height: 2em">
-                電話番号
-                <%= @customer.phone_number %>
-              </div>
+              <tr>
+                <td>メールアドレス</td>
+                <td><%= @customer.email %></td>
+              </tr>
 
-              <div style= "line-height: 2em">
-                メールアドレス
-                <%= @customer.email %>
-              </div>
 
-              <div style= "line-height: 2em">
-                <tr>会員ステータス</tr>
+              <tr>
+                <td>会員ステータス</td>
               　<% if @customer.is_closed == true %>
-              　<tr>有効</tr>
+              　<td>有効</td>
                 <% else %>
-                <tr>退会</tr>
+                <td>退会</td>
                 <% end %>
-              </div>
-              <br>
-              <br>
-              <div style= "line-height: 2em">
-              <%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn btn-success" %>
-              <%= link_to "注文履歴一覧を見る", admin_path, class: "btn btn-primary" %>
-          　   </div>
+              </tr>
+
+            </tbody>
+              <tr>
+              <td></td>
+              <td><%= link_to "編集する",edit_admin_customer_path(@customer), class: "btn btn-success" %>
+                  <%= link_to "注文履歴一覧を見る", admin_path, class: "btn btn-primary" %></td>
+              </tr>
 
           </table>
       </div>
