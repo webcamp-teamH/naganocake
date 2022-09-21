@@ -18,13 +18,37 @@
               <th>注文詳細</th>
             </tr>
           </thead>
+
           <tbody>
-           </tbody>
+            <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+              <td>
+                〒<%= order.postcode %><br>
+                <%= order.address %><br>
+                <%= order.name %>
+              </td>
+              <td>
+                <% order.order_items.each do |order_item| %>
+                  <%= order_item.item.name %>
+                <% end %>
+              </td>
+              <td><%= order.grand_total %>円</td>
+              <td><%= order.order_status %></td>
+              <td>
+                <%= link_to order_path(order.id) do %>
+                  <p>表示する</p>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
         </table>
       </div>
+
       <div class="row">
         <div class="col-12 d-flex justify-content-center mt-5 ">
-          <!--<p>< %= paginate @orders %></p>-->
+          <p><%= paginate @order %></p>
         </div>
       </div>
     </div>
