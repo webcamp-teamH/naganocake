@@ -20,10 +20,12 @@ class Public::CustomersController < ApplicationController
 
   def close
     @customer = current_customer
-    @customer.update(is_active: true)
+    @customer.update(is_closed: false)
     sign_out
     redirect_to root_path
   end
+
+
 
   private
 
