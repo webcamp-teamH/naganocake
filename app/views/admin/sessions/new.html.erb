@@ -1,19 +1,36 @@
-<h2>管理者ログイン</h2>
+<div class="container">
+<h4 class="m-4"><span style="background-color:#eeeeee">管理者ログイン</span></h4>
+</div>
 
-<%= form_with model: @admin, url: admin_session_path do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <table class= "table table table-borderless ">
+        <%= form_with model: @admin, url: admin_session_path do |f| %>
+        <tr>
+          <div class="field">
+            <td><%= f.label :メールアドレス %></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+          </div>
+        </tr>
 
-  <div class="field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <tr>
+          <div class="field">
+            <td><%= f.label :パスワード %></td>
+            <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+          </div>
+        </tr>
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+        <tr>
+          <div class="actions">
+            <td></td>
+            <td><%= f.submit "ログイン", class: "btn btn-primary" %></td>
+          </div>
+        </tr>
+        <% end %>
+      </table>
+    </div>
   </div>
-<% end %>
+</div>
 
 <%= render "admin/shared/links" %>
