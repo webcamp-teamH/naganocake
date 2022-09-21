@@ -1,5 +1,5 @@
 class Admin::OrdersController < ApplicationController
-  
+  before_action :authenticate_admin!
   def show
     @order = Order.find(params[:id])
     @order.shipping_cost = 800
@@ -18,6 +18,6 @@ class Admin::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:order_status)
-  end  
-  
+  end
+
 end
