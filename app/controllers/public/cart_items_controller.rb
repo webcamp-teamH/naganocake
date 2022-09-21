@@ -41,7 +41,7 @@ class Public::CartItemsController < ApplicationController
 
   def update
     @cart_item = Cart.find(params[:id])
-    if @cart_item.update(cart_params)
+    if @cart_item.update(cart_item_params)
       redirect_to cart_items_path, notice: "変更しました"
     else
       render :index, notice: "商品数の変更ができませんでした"
