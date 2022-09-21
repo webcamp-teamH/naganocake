@@ -24,7 +24,7 @@
                <% if customer_signed_in? %>
       <!--会員のログイン時に表示-->
               <p class="text-white">
-                ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！
+                ようこそ、<%= current_customer.first_name %><%= current_customer.last_name %>さん！
               </p>
               <li>
                 <%= link_to '/customers/mypage', class: "nav-link text-light" do %>マイページ
