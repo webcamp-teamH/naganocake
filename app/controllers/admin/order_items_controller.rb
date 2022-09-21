@@ -9,7 +9,7 @@ class Admin::OrderItemsController < ApplicationController
        @order.update(order_status: "at_work")
     end
     if @order_items.count == @order_items.where(production_status: "end_production").count
-      @order.update(order_status: "shipping_preparation")
+       @order.update(order_status: "shipping_preparation")
     end
     redirect_to admin_order_path(@order)
   end
