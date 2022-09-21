@@ -1,33 +1,42 @@
-<div>
-  <h1>ショッピングカート</h1>
-  <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete %>
+<div class="container">
+  <div class="row">
+    <h2 class="table-secondary col-md-4 mt-4 mb-4">
+        ショッピングカート
+    </h2>
+    <div class="ml-auto mt-4 mb-3">
+        <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %>
+    </div>
+  </div>
+  <div>
+    <table>
+      <thead>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th></th>
+      </thead>
+
+      <tbody>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= cart_item.item.name %></td>
+          <td><%= cart_item.item.with_tax_price %></td>
+          <td><%= cart_item.quantity %></td>
+          <td><%= cart_item.subtotal %></td>
+          <td class="btn btn-danger"><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+       <!--合計金額-->
+       <div>合計金額</div>
+       <div><%= @cart_total %></div>
+
+       <% if @cart_count !=0 %>
+       <div class="btn btn-success"><%= link_to new_order_path do %>情報入力画面に進む<% end %></div>
+       <% end %>
+
 </div>
-<table>
-  <thead>
-    <th>商品名</th>
-    <th>単価(税込)</th>
-    <th>数量</th>
-    <th>小計</th>
-    <th></th>
-  </thead>
-
-  <tbody>
-  <% @cart_items.each do |cart_item| %>
-    <tr>
-      <td><%= cart_item.item.name %></td>
-      <td><%= cart_item.item.with_tax_price %></td>
-      <td><%= cart_item.quantity %></td>
-      <td><%= cart_item.subtotal %></td>
-      <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-
- <!--合計金額-->
- <div>合計金額</div>
- <div><%= @cart_total %></div>
-
- <% if @cart_count !=0 %>
- <div><%= link_to new_order_path do %>情報入力画面に進む<% end %></div>
- <% end %>
