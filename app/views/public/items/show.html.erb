@@ -1,8 +1,8 @@
 <div>
-  <%= image_tag @item.get_image %>
-  <p>商品名:<%= @item.name %></p>
-  <p>説明文:<%= @item.introduction %></p>
-  <p>値段:<%= @item.price %></p>
+  <%= image_tag @item.get_image(200,200) %>
+  <p><%= @item.name %></p>
+  <p><%= @item.introduction %></p>
+  <p>￥<%= @item.price %>円</p>
 
   <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
     <%= f.hidden_field :item_id, :value => @item.id %>
