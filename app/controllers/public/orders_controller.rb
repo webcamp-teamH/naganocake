@@ -7,7 +7,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @order = Order.new
+    @order = Order.new(order_params)
     @customer = current_customer
     @order.postcode = @customer.postcode
     @order.address = @customer.address
@@ -16,14 +16,13 @@ class Public::OrdersController < ApplicationController
     @cart_total = cart_total
     @shipping_cost = shipping_cost
     @grand_total = @cart_total + @shipping_cost
-    @payment_method = order_params[:payment_method]
 
-    if order_params[:select_address] == "ご自身の住所"
+    if params[:order][:select_address] == "ご自身の住所"
       @customer = current_customer
       @selected_address = Address.create(customer_id: @customer, name: @customer.last_name + @customer.first_name, address: @customer.address, postcode: @customer.postcode)
 
-    elsif order_params[:select_address]  == "登録住所から選択"
-      if order_params[:address_id] == nil
+    elsif params[:order][:select_address]  == "登録住所から選択"
+      if params[:order][:address_id] == nil
         flash[:registered] = "登録済み住所がありません"
         flash[:new] = ""
         @order = Order.new
@@ -32,14 +31,14 @@ class Public::OrdersController < ApplicationController
         @selected_address = Address.find(params[:order][:address_id])
       end
 
-    elsif order_params[:select_address] == "新しいお届け先"
-      if order_params[:new_name] == "" || order_params[:new_address] == "" || order_params[:new_postcode] == ""
+    elsif params[:order][:select_address] == "新しいお届け先"
+      if params[:order][:new_name] == "" || order_params[:new_address] == "" || order_params[:new_postcode] == ""
         flash[:new] = "新しいお届け先を入力してください"
         flash[:registered] = ""
         @order = Order.new
         render :new
       else
-        @selected_address = Address.create(customer_id: @customer, name: order_params[:new_name], address: order_params[:new_address], postcode: order_params[:new_postcode])
+        @selected_address = Address.create(customer_id: @customer, name: params[:order][:new_name], address: params[:order][:new_address], postcode: params[:order][:new_postcode])
       end
     end
   end
@@ -69,7 +68,6 @@ class Public::OrdersController < ApplicationController
   def index
     @customer = current_customer
     @orders = @customer.orders.order(created_at: :desc)
-    @order = Order.page(params[:page]).per(5)
   end
 
   def show
@@ -91,6 +89,6 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:payment_method, :select_address, :address_id, :postcode, :address, :name, :new_name, :new_address, :new_postcode)
+    params.require(:order).permit(:payment_method, :address_id, :postcode, :address, :name)
   end
 end
