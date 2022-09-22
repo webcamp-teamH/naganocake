@@ -11,7 +11,7 @@ class Public::OrdersController < ApplicationController
     @customer = current_customer
     @order.postcode = @customer.postcode
     @order.address = @customer.address
-    @order.name = @customer.first_name + @customer.last_name
+    @order.name = @customer.last_name + @customer.first_name
 
     @cart_total = cart_total
     @shipping_cost = shipping_cost
