@@ -1,40 +1,58 @@
 <div class="container">
-  <div class="row-cols-8">
-    <div class="col-md-12">
-      <h2 class="mt-4 mb-4 table-secondary  text-center">
+<h4 class="m-4"><span style="background-color:#eeeeee">配送先登録・一覧</span></h4>
+</div>
 
-        配送先登録・一覧
-      </h2>
-      <div class="address-form-group">
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <table class=" table table-borderless">
+        <tbody>
         <!--配送先登録-->
         <%= form_with model: @address, url: addresses_path, method: :post do |f| %>
-        <div>
-          <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
-          <%= f.text_field :postcode, placeholder: "0000000" %>
-        </div>
-        <div>
-          <%= f.label :address, "住所" %>
-          <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0" %>
-        </div>
-        <div>
-          <%= f.label :name, "宛名" %>
-          <%= f.text_field :name, placeholder: "山田太郎" %>
-        </div>
-        <div>
-          <%= f.submit "新規登録", class:"btn btn-success" %>
-        </div>
-        <% end %>
-      </div>
+          <tr>
+            <td class="col-3">
+              <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+            </td>
+            <td class="col-5">  
+            <%= f.text_field :postcode, placeholder: "0000000" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            <%= f.label :address, "住所" %>
+            <td> 
+            <%= f.text_field :address, :size=>"60", placeholder: "東京都渋谷区代々木神園町0-0" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            <%= f.label :name, "宛名" %>
+            </td>
+            <td>
+            <%= f.text_field :name, placeholder: "山田太郎" %>
+            </td>
+            <td class="col-md3">
+            <%= f.submit "新規登録", class:"btn btn-success" %>
+            </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>    
+    </div>
+  </div>
+</div>
 
       <!--配送先一覧-->
-      <div>
-        <table class="table table-bordered mt-4">
-          <thead>
-            <tr class="table-secondary">
-              <th>郵便番号</th>
-              <th>住所</th>
-              <th>宛名</th>
-              <th colspan ="2"></th>
+  <div class="container">
+    <div class="row">
+     <div class="col-9">
+      <table class="table table-bordered">
+        <thead class=" thead-light ">
+          <tr>
+              <th class="col-2">郵便番号</th>
+              <th class="col-3">住所</th>
+              <th class="col-2">宛名</th>
+              <th class="col-2"></th>
             </tr>
           </thead>
 
