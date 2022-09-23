@@ -20,7 +20,7 @@
 
           <% if customer_signed_in? %>
           <!--会員のログイン時に表示-->
-          <div class ="d-flex align-items-center justify-content- text-white">
+          <div class ="d-flex align-items-center justify-content-center text-white">
             ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！
           </div>
 
@@ -41,12 +41,11 @@
               <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link text-light" do  %>ログアウト
               <% end %>
             </li>
-
-
+          </ul>
 
             <% elsif admin_signed_in? %>
             <!--管理者ログイン時に表示-->
-
+          <ul class ="navbar-nav ml-10">
             <li>
               <%= link_to '/admin/items', class: "nav-link text-light" do %>商品一覧
               <% end %>
@@ -67,10 +66,12 @@
               <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link text-light" do  %>ログアウト
               <% end %>
             </li>
+          </ul>
 
             <% else %>
 
 　　　<!--ログアウト時に表示-->
+　　　   <ul class ="navbar-nav ml-10">
             <li>
               <%= link_to '/about', class: "nav-link text-light" do %>About
               <% end %>

@@ -7,9 +7,9 @@
       <% @items.each do |item| %>
         <div  class="col-3 ">
           <%= link_to item_path(item.id) do %>
-          <%= image_tag item.get_image(250,250) %>
-          <% end %><br/>
+          <%= image_tag item.get_image(250,250) %><br/>
           <%= item.name %>
+          <% end %>
           <p>￥<%= item.price %>円</p>
         </div>
       <% end %>

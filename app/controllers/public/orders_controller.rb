@@ -32,13 +32,13 @@ class Public::OrdersController < ApplicationController
       end
 
     elsif params[:order][:select_address] == "新しいお届け先"
-      if params[:order][:new_name] == "" || order_params[:new_address] == "" || order_params[:new_postcode] == ""
+      if params[:order][:name] == "" || order_params[:address] == "" || order_params[:postcode] == ""
         flash[:new] = "新しいお届け先を入力してください"
         flash[:registered] = ""
         @order = Order.new
         render :new
       else
-        @selected_address = Address.create(customer_id: @customer, name: params[:order][:new_name], address: params[:order][:new_address], postcode: params[:order][:new_postcode])
+        @selected_address = Address.create(customer_id: @customer, name: params[:order][:name], address: params[:order][:address], postcode: params[:order][:postcode])
       end
     end
   end
@@ -89,6 +89,6 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:payment_method, :address_id, :postcode, :address, :name)
+    params.require(:order).permit(:payment_method, :postcode, :address, :name)
   end
 end
