@@ -15,7 +15,9 @@
       <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
         <div class = "container">
           <a class = "navbar-brand" href ="/">
-            <span>LOGO</span>
+            <span>
+              <%= link_to image_tag"logo.jpeg" ,size: '100x50' %>
+              </span>
           </a>
 
           <% if customer_signed_in? %>
