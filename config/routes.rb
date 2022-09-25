@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get '/customers/mypage' =>'customers#show'
     get '/customers/infomation/edit' => 'customers#edit'
     patch '/customers/infomation' => 'customers#update'
-    get '/customers/c/cancel' => 'customers#cancel'
+    get '/customers/quit' => 'customers#quit'
     patch '/customers/close' => 'customers#close'
 
     resources :cart_items, only: [:index, :update, :create, :destroy] do
