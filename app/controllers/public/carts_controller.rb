@@ -1,4 +1,4 @@
-class Public::CartItemsController < ApplicationController
+class Public::CartsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
@@ -25,14 +25,14 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item_new = Cart.new(cart_item_params)
     @cart_item = current_customer.carts.find_by(item_id: params[:cart][:item_id])
-    if Cart.find_by(item_id: params[:cart][:item_id])
+    if @cart_item.present?
       @cart_item.quantity += params[:cart][:quantity].to_i
       @cart_item.save
-      redirect_to cart_items_path
+      redirect_to carts_path
     else
       @cart_item_new.customer_id = current_customer.id
       if @cart_item_new.save
-        redirect_to cart_items_path
+        redirect_to carts_path
       else
         redirect_to request.referer
       end
@@ -42,7 +42,7 @@ class Public::CartItemsController < ApplicationController
   def update
     @cart_item = Cart.find(params[:id])
     if @cart_item.update(cart_item_params)
-      redirect_to cart_items_path, notice: "変更しました"
+      redirect_to carts_path, notice: "変更しました"
     else
       render :index, notice: "商品数の変更ができませんでした"
     end
@@ -51,13 +51,13 @@ class Public::CartItemsController < ApplicationController
   def destroy
     @cart_item = Cart.find(params[:id])
     @cart_item.destroy
-    redirect_to cart_items_path
+    redirect_to carts_path
   end
 
   def destroy_all
     @cart_items = current_customer.carts
     @cart_items.destroy_all
-    redirect_to cart_items_path
+    redirect_to carts_path
   end
 
 
