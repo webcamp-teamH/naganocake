@@ -1,12 +1,30 @@
-<div>
-  <%= image_tag @item.get_image %>
-  <p>商品名:<%= @item.name %></p>
-  <p>説明文:<%= @item.introduction %></p>
-  <p>値段:<%= @item.price %></p>
-
-  <%= form_with model: @cart_item, method: :post do |f| %>
-    <%= hidden_fied :item_id, :value => @item.id %>
-    <%= f.select :quantity, *[1..10] %>
-    <%= f.submit 'カートに入れる' %>
-  <% end %>
+<div class="container m-5">
+  <div class="row">
+    <div class="text-center col-sm-5">
+      <%= image_tag @item.get_image(350,350)%>
+    </div>
+    <div class="col-sm-7">
+      <table class="table table-borderless">
+        <tr>
+          <td><h3><%= @item.name  %></h3></td>
+        </tr>
+        <tr>
+          <td><h6><%= @item.introduction %></h6></td>
+        </tr>
+        <tr>
+          <td><h3>¥<%= @item.price %></h3></td>
+        </tr>
+        <tr>
+          <td>
+            <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+              <%= f.hidden_field :item_id, :value => @item.id %>
+              <%= f.select :quantity, *[1..10] , include_blank: "個数選択"%>
+              <%= f.submit 'カートに入れる', class: "btn btn-success text-right ml-4" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
+

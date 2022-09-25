@@ -1,18 +1,36 @@
-<p>
-  ようこそ、ながのCAKEへ！<br>
-  このサイトは、ケーキ販売のECサイトになります。<br>
-  会員ではない方も商品の閲覧はできますが、<br>
-  購入には会員登録が必要になります。
-</p>
+<div class ="container">
+  <div class ="row">
+    <div class="col-md-8">
+      <div class="card">
+        <p>
+          <img src="assets/top.png", style="width: 500%; height: 500px;", class="img-thumbnail">
+            <div class="d-flex justify-content-center align-items-center card-img-overlay">
+              <h4 class="text-center px-5 py-5" style="background-color: rgba(eb, e2, e5, 0.6); font-family: cursive;">
+                <p>
+                ようこそ、ながのCAKEへ！<br>
+                このサイトは、ケーキ販売のECサイトになります。<br>
+                会員ではない方も商品の閲覧はできますが、<br>
+                購入には会員登録が必要になります。
+              </p>
+            </h4>
+          </div>
+        </div>
 
 
-<div>
-  <h1>新着商品</h1>
-  <ul>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ul>
-  <a href ="/items">すべての商品を見る</a>
+    <div>
+      <h1>新着商品</h1>
+      <div style ="display: flex; flex-wrap:wrap;">
+      <% @items.each do |item| %>
+        <%= link_to item_path(item) do %>
+        <div>
+          <%= image_tag item.get_image(100,100) %><br>
+          <%= item.name %>
+          <%= item.with_tax_price %>
+        </div>
+        <% end %>
+      <% end %>
+      </div>
+      <a href ="/items">すべての商品を見る</a>
+    </div>
+  </div>
 </div>

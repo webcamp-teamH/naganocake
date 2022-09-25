@@ -1,16 +1,30 @@
 <div class="container">
-  <h1>商品一覧</h1>
   <div class="row">
+    <div class= col-4>
+       <h4 class="m-4"><span style="background-color:#eeeeee">商品一覧</span></h4>
+    </div>
 
-    <h5><%= link_to '+(商品追加のボタン)', new_admin_item_path %></h5>
-    <table class="table table-striped">
-      <thead>
+    <div class= "col-5"></div>
+
+    <div class="col-3">
+      <p class="my-4"><%= link_to new_admin_item_path do %>
+        <button type="button" class="btn btn-outline-dark rounded-circle p-0" style="width:3rem;height:3rem;">＋</button>
+      <% end %></p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-11">
+    <table class="table">
+      <thead class=" thead-light ">
         <tr>
-          <th>商品ID</th>
-          <th>商品名</th>
-          <th>税込価格</th>
-          <th>ジャンル</th>
-          <th>ステータス</th>
+          <th class="col-1">商品ID</th>
+          <th class="col-3">商品名</th>
+          <th class="col-1">税込価格</th>
+          <th class="col-3">ジャンル</th>
+          <th class="col-2">ステータス</th>
         </tr>
       </thead>
       <tbody>
@@ -18,9 +32,17 @@
           <tr>
             <td><%= item.id %></td>
             <td><%= link_to item.name, admin_item_path(item.id) %></td>
-            <td><%= item.price %></td>
+            <td><%= item.price.to_s(:delimited) %> 円</td>
             <td><%= item.genre.name %></td>
-            <td><%= item.is_active ? '販売中' : '売切' %></td>
+            <td>
+              <div class="font-weight-bold">
+                <% if item.is_active == true %>
+                  <p class="text text-success">販売中</p>
+                <% else %>
+                  <p class="text text-secondary">販売停止中</p>
+                <% end %>
+              </div>
+            </td>
           </tr>
         <% end %>
       </tbody>
@@ -28,9 +50,4 @@
     <%= paginate @items %>
   </div>
 </div>
-
-<h5>商品追加の「＋」ボタン</h5>
-<h5>商品名のリンク色を黒、下線有りに変える</h5>
-<h5>販売ステータスの色を緑に変更</h5>
-<h5>タイトルのCSS</h5>
-<h5>テーブル作成微修正</h5>
+</div>

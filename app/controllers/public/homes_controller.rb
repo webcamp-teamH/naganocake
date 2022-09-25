@@ -1,7 +1,14 @@
 class Public::HomesController < ApplicationController
+
   def top
-  end 
-  
+    @items = Item.limit(4).order("created_at DESC")
+  end
+
   def about
-  end  
+  end
+
+  private
+  def item_params
+    params.require(:item).permit(:name, :image)
+  end
 end
