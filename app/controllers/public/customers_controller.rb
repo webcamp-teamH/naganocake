@@ -25,6 +25,10 @@ class Public::CustomersController < ApplicationController
     redirect_to root_path
   end
 
+  def quit
+     @customer = current_customer
+  end
+
 
 
   private
